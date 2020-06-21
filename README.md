@@ -1399,11 +1399,13 @@ Comparison:
 ```
 
 
-## Less idiomatic but with significant performance ruby
-Checkout: https://github.com/JuanitoFatas/fast-ruby/wiki/Less-idiomatic-but-with-significant-performance-difference
+## Less idiomatic but with significant performance
+- [`Array#reverse.index` vs `Array#size` - `Array#index` - 1](https://github.com/JuanitoFatas/fast-ruby/pull/28)
 
 ## Contributing
-Find your information in [CONTRIBUTING.md](CONTRIBUTING.md)!
+Feel free to help edit!
+
+Find your information in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Thank you in advance! :wink: :beer:
 
@@ -1432,6 +1434,16 @@ Brought to you by [@JuanitoFatas](https://twitter.com/juanitofatas) and my frien
 - [Fasterer](https://github.com/DamirSvrtan/fasterer)
 
   Make your Rubies go faster with this command line tool.
+
+### Talks
+Talks can help write faster code and build better performance.
+
+- [Speed Science](https://speakerdeck.com/schneems/speed-science) by [Richard Schneeman](https://twitter.com/schneems)
+- [Writing Fast Ruby](https://speakerdeck.com/sferik/writing-fast-ruby) by [Erik Michaels-Ober](https://twitter.com/sferik)
+- [How to Performance](https://speakerdeck.com/eileencodes/burlington-ruby-2015-how-to-performance) by [Eileen M. Uchitelle](https://twitter.com/eileencodes)
+
+### Articles
+- [Patching Rails Performance](http://engineering.heroku.com/blogs/2015-08-06-patching-rails-performance/)
 
 ## License
 
