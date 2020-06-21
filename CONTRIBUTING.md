@@ -1,45 +1,29 @@
 Thank you for checking in!
 
-If you find any typos, errors, or have an better example. Just raise a new issue or open a pull request!
+:heart:
 
-<3
+## Something went wrong?
+Code example is wrong? :frowning: Got better example? :smiley: Excellent!
 
-These idioms list here are trying to satisfiy following goals:
+If you find any typos, errors, or have an better example, just [`raise` a new issue](https://github.com/JuanitoFatas/fast-ruby/issues/new) or [Open a Pull Request](https://github.com/JuanitoFatas/fast-ruby/pulls) to fix it!
 
-[![GOALS](/images/Goals.png)](https://speakerdeck.com/sferik/writing-fast-ruby?slide=11)
+## Measurement Tool
+Use [benchmark-ips](https://github.com/evanphx/benchmark-ips) (2.0+).
 
-## Note on entry
+## Submit New Entry
+Please! [Edit our README.md](https://github.com/JuanitoFatas/fast-ruby/edit/master/README.md) then [Submit an awesome Pull Request](https://github.com/JuanitoFatas/fast-ruby/pulls)!
 
-Fast code first.
+### Note on entry
+Fast code is perferred first.
 
-```ruby
-require 'benchmark/ips'
+Here’s a template: <template.rb>
 
-def fast
-end
-
-def slow
-end
-
-Benchmark.ips do |x|
-  x.report('fast code description') { fast }
-  x.report('slow code description') { slow }
-  x.compare!
-end
+## Run your result
+```
+$ ruby -v code/your/new/entry.rb
 ```
 
-Run your result:
+## Thanks in advance‼️
+Look forward to learning more from you!
 
-```
-$ ruby -v code/your-new/entry.rb
-```
-
-Thanks in advance!!! Look forward to learning more from you!
-
-<3 [JuanitoFatas](https://twitter.com/juanitofatas)
-
-###### License
-
-<small>The documentation is [CC BY-SA 4.0 (International)](https://github.com/JuanitoFatas/fast-ruby#license).</small>
-
-<small>And code will be [CC0 1.0 Universal](https://github.com/JuanitoFatas/fast-ruby#code-license).</small>
+:heart: [@JuanitoFatas](https://twitter.com/juanitofatas)
