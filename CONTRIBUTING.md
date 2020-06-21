@@ -1,6 +1,6 @@
 Thank you for checking in!
 
-:heart:
+:yellow_heart:
 
 ## Something went wrong?
 Code example is wrong? :frowning: Got better example? :smiley: Excellent!
@@ -16,7 +16,7 @@ Please! [Edit our README.md](https://github.com/JuanitoFatas/fast-ruby/edit/mast
 ### Note on entry
 Fast code is perferred first.
 
-Here’s a template: <template.rb>
+Here’s a template: [template.rb](template.rb)
 
 ## Run your result
 ```
@@ -26,4 +26,4 @@ $ ruby -v code/your/new/entry.rb
 ## Thanks in advance‼️
 Look forward to learning more from you!
 
-:heart: [@JuanitoFatas](https://twitter.com/juanitofatas)
+:yellow_heart: [@JuanitoFatas](https://twitter.com/juanitofatas)

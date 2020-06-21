@@ -11,7 +11,7 @@ Each idiom has their corresponding code residing in [code](code).
 
 You can checkout [the travis build](https://travis-ci.org/JuanitoFatas/fast-ruby) for these benchmark results ran against different Ruby implementations.
 
-**Let's write faster code, together! :heart:**
+**Let's write faster code, together! :yellow_heart:**
 
 ## Analyze your code
 Checkout the [fasterer](https://github.com/DamirSvrtan/fasterer) project – it's a static analysis that checks speed idioms written in this repo.
@@ -1403,14 +1403,14 @@ Comparison:
 Checkout: https://github.com/JuanitoFatas/fast-ruby/wiki/Less-idiomatic-but-with-significant-performance-difference
 
 ## Contributing
-Here → <CONTRIBUTING.md>
+Find your information in [CONTRIBUTING.md](CONTRIBUTING.md)!
 
 Thank you in advance! :wink: :beer:
 
 ## One more thing
-[Tweet this with your #Rubyfriends! :heart:](https://twitter.com/intent/tweet?url=http%3A%2F%2Fgit.io%2F4U3xdw&text=Fast%20Ruby%20--%20Common%20Ruby%20Idioms%20inspired%20by%20%40sferik&original_referer=&via=juanitofatas&hashtags=#RubyFriends)
+[Tweet this with your #Rubyfriends! :yellow_heart:](https://twitter.com/intent/tweet?url=http%3A%2F%2Fgit.io%2F4U3xdw&text=Fast%20Ruby%20--%20Common%20Ruby%20Idioms%20inspired%20by%20%40sferik&original_referer=&via=juanitofatas&hashtags=#RubyFriends)
 
-Brought to you by [@JuanitoFatas](https://twitter.com/juanitofatas) and my friends. Feel free to talk with me on Twitter! :heart:
+Brought to you by [@JuanitoFatas](https://twitter.com/juanitofatas) and my friends. Feel free to talk with me on Twitter! :yellow_heart:
 
 ## Also Checkout
 - [Derailed Benchmarks](https://github.com/schneems/derailed_benchmarks)
@@ -1445,4 +1445,4 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Inter
 
 To the extent possible under law, JuanitoFatas has waived all copyright and related or neighboring rights to “fast-ruby”.
 
-:heart: This work belongs to the community.
+:yellow_heart: This work belongs to the community.
