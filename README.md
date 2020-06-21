@@ -1,49 +1,20 @@
-Fast Ruby [![Build Status](https://travis-ci.org/JuanitoFatas/fast-ruby.svg?branch=travis)](https://travis-ci.org/JuanitoFatas/fast-ruby)
-=======================================================================================================================================================================
-
-In [Erik Michaels-Ober](https://github.com/sferik)'s great talk, 'Writing Fast Ruby': [Video @ Baruco 2014](https://www.youtube.com/watch?v=fGFM_UrSp70), [Slide](https://speakerdeck.com/sferik/writing-fast-ruby), he presented us with many idioms that lead to faster running Ruby code. He inspired me to document these to let more people know. I try to link to real commits so people can see that this can really have benefits in the real world. **This does not mean you can always blindly replace one with another. It depends on the context (e.g. `gsub` versus `tr`). Friendly reminder: Use with caution!**
+# Fast Ruby [![Build Status](https://travis-ci.org/JuanitoFatas/fast-ruby.svg?branch=travis)](https://travis-ci.org/JuanitoFatas/fast-ruby)
+In [Erik Michaels-Ober](https://github.com/sferik)’s great talk, “Writing Fast Ruby”([Video @ Baruco 2014](https://www.youtube.com/watch?v=fGFM_UrSp70), [Slide](https://speakerdeck.com/sferik/writing-fast-ruby)), he presented us with many idioms that lead to faster running Ruby code. He inspired me to document these to let more people know. I try to link to real commits so people can see that this can really have benefits in the real world. **This does not mean you can always blindly replace one with another. It depends on the context (e.g. `gsub` versus `tr`). Friendly reminder: Use with caution!**
 
 Each idiom has a corresponding code example that resides in [code](code).
 
-All results listed in README.md are running with Ruby 2.2.0p0 on OS X 10.10.1. Machine information: MacBook Pro (Retina, 15-inch, Mid 2014), 2.5 GHz Intel Core i7, 16 GB 1600 MHz DDR3. Your results may vary, but you get the idea. : )
+~~All results listed in README.md are running with Ruby 2.2.0p0 on OS X 10.10.1. Machine information: MacBook Pro (Retina, 15-inch, Mid 2014), 2.5 GHz Intel Core i7, 16 GB 1600 MHz DDR3.~~ Your results may vary, but you get the idea. :slightly_smiling_face:
 
 You can checkout [the travis build](https://travis-ci.org/JuanitoFatas/fast-ruby) for these benchmark results ran against different Ruby implementations.
 
-**Let's write faster code, together! <3**
+**Let's write faster code, together! :heart:**
 
-Analyze your code
------------------
-
+## Analyze your code
 Checkout the [fasterer](https://github.com/DamirSvrtan/fasterer) project - it's a static analysis that checks speed idioms written in this repo.
 
-Measurement Tool
------------------
-
-Use [benchmark-ips](https://github.com/evanphx/benchmark-ips) (2.0+).
-
-### Template
-
-```ruby
-require "benchmark/ips"
-
-def fast
-end
-
-def slow
-end
-
-Benchmark.ips do |x|
-  x.report("fast code description") { fast }
-  x.report("slow code description") { slow }
-  x.compare!
-end
-```
-
-Idioms
-------
+## Idioms
 
 ### Index
-
 - [General](#general)
 - [Array](#array)
 - [Date](#date)
@@ -1425,35 +1396,28 @@ Comparison:
 
 
 ## Less idiomatic but with significant performance ruby
-
 Checkout: https://github.com/JuanitoFatas/fast-ruby/wiki/Less-idiomatic-but-with-significant-performance-difference
 
+## [Contributing](CONTRIBUTING.md)
+Thank you in advance! :wink: :beer:
 
-## Submit New Entry
+### Measurement Tool
+Use [benchmark-ips](https://github.com/evanphx/benchmark-ips) (2.0+).
 
+### Submit New Entry
 Please! [Edit this README.md](https://github.com/JuanitoFatas/fast-ruby/edit/master/README.md) then [Submit a Awesome Pull Request](https://github.com/JuanitoFatas/fast-ruby/pulls)!
 
-
-## Something went wrong
-
-Code example is wrong? :cry: Got better example? :heart_eyes: Excellent!
+### Something went wrong?
+Code example is wrong? :frowning: Got better example? :smiley: Excellent!
 
 [Please open an issue](https://github.com/JuanitoFatas/fast-ruby/issues/new) or [Open a Pull Request](https://github.com/JuanitoFatas/fast-ruby/pulls) to fix it.
 
-Thank you in advance! :wink: :beer:
-
-
 ## One more thing
+[Tweet this with your #Rubyfriends! :heart:](https://twitter.com/intent/tweet?url=http%3A%2F%2Fgit.io%2F4U3xdw&text=Fast%20Ruby%20--%20Common%20Ruby%20Idioms%20inspired%20by%20%40sferik&original_referer=&via=juanitofatas&hashtags=#RubyFriends)
 
-[Share this with your #Rubyfriends! <3](https://twitter.com/intent/tweet?url=http%3A%2F%2Fgit.io%2F4U3xdw&text=Fast%20Ruby%20--%20Common%20Ruby%20Idioms%20inspired%20by%20%40sferik&original_referer=&via=juanitofatas&hashtags=#RubyFriends)
-
-Brought to you by [@JuanitoFatas](https://twitter.com/juanitofatas)
-
-Feel free to talk with me on Twitter! <3
-
+Brought to you by [@JuanitoFatas](https://twitter.com/juanitofatas) and my friends. Feel free to talk with me on Twitter! :heart:
 
 ## Also Checkout
-
 - [Derailed Benchmarks](https://github.com/schneems/derailed_benchmarks)
 
   Go faster, off the Rails - Benchmarks for your whole Rails app
@@ -1474,18 +1438,17 @@ Feel free to talk with me on Twitter! <3
 
   Make your Rubies go faster with this command line tool.
 
-
 ## License
 
+### Documentation
 ![CC-BY-SA](CC-BY-SA.png)
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
+### Source Code
 
-## Code License
+** CC0 1.0 Universal **
 
-### CC0 1.0 Universal
+To the extent possible under law, JuanitoFatas has waived all copyright and related or neighboring rights to “fast-ruby”.
 
-To the extent possible under law, @JuanitoFatas has waived all copyright and related or neighboring rights to "fast-ruby".
-
-This work belongs to the community.
+:heart: This work belongs to the community.
