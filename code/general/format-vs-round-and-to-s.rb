@@ -1,6 +1,6 @@
 require 'benchmark/ips'
 
-NUM = 1.12678.freeze
+NUM = 1.12678
 
 def fast
   NUM.round(2).to_s
