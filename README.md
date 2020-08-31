@@ -5,7 +5,7 @@ These idioms listed here are trying to satisfiy following goals:
 
 [![https://speakerdeck.com/sferik/writing-fast-ruby?slide=11](Goals.png)](https://speakerdeck.com/sferik/writing-fast-ruby?slide=11)
 
-Each idiom has their corresponding code residing in [code](code).
+Each idiom has their corresponding code residing in [“code”](code).
 
 ~~All results listed in README.md are running with Ruby 2.2.0p0 on OS X 10.10.1. Machine information: MacBook Pro (Retina, 15-inch, Mid 2014), 2.5 GHz Intel Core i7, 16 GB 1600 MHz DDR3.~~ Your results may vary, but you get the idea. :slightly_smiling_face:
 
@@ -19,39 +19,14 @@ Checkout the [fasterer](https://github.com/DamirSvrtan/fasterer) project – it'
 ## Idioms
 
 ### Index
-- [General](#general)
+- [ParadoxV5 is moving the idioms to the Wiki!](/wiki)
 - [Array](#array)
-- [Date](#date)
 - [Enumerable](#enumerable)
 - [Hash](#hash)
 - [Proc & Block](#proc--block)
 - [String](#string)
-- [Time](#time)
-- [Range](#range)
 
 ### General
-
-##### Parallel Assignment vs Sequential Assignment [code](code/general/assignment.rb)
-
-[Read the rationale here](https://github.com/JuanitoFatas/fast-ruby/pull/50#issue-98586885).
-
-```
-$ ruby -v code/general/assignment.rb
-ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
-
-Calculating -------------------------------------
- Parallel Assignment   149.201k i/100ms
-Sequential Assignment
-                       142.545k i/100ms
--------------------------------------------------
- Parallel Assignment      7.687M (± 6.9%) i/s -     38.345M
-Sequential Assignment
-                          6.320M (± 8.5%) i/s -     31.360M
-
-Comparison:
- Parallel Assignment:  7686954.1 i/s
-Sequential Assignment:  6320425.6 i/s - 1.22x slower
-```
 
 ##### `attr_accessor` vs `getter and setter` [code](code/general/attr-accessor-vs-getter-and-setter.rb)
 
@@ -70,116 +45,6 @@ Calculating -------------------------------------
 Comparison:
        attr_accessor:  1865408.4 i/s
    getter_and_setter:  1660021.9 i/s - 1.12x slower
-```
-
-##### `begin...rescue` vs `respond_to?` for Control Flow [code](code/general/begin-rescue-vs-respond-to.rb)
-
-```
-$ ruby -v code/general/begin-rescue-vs-respond-to.rb
-ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14]
-
-Calculating -------------------------------------
-      begin...rescue    29.452k i/100ms
-         respond_to?   106.528k i/100ms
--------------------------------------------------
-      begin...rescue    371.591k (± 5.4%) i/s -      1.855M
-         respond_to?      3.277M (± 7.5%) i/s -     16.299M
-
-Comparison:
-         respond_to?:  3276972.3 i/s
-      begin...rescue:   371591.0 i/s - 8.82x slower
-```
-
-##### `define_method` vs `module_eval` for Defining Methods [code](code/general/define_method-vs-module-eval.rb)
-
-```
-$ ruby -v code/general/define_method-vs-module-eval.rb
-ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14]
-
-Calculating -------------------------------------
-module_eval with string 125.000  i/100ms
-       define_method    138.000  i/100ms
--------------------------------------------------
-module_eval with string   1.130k (±20.3%) i/s -      5.500k
-       define_method      1.346k (±25.9%) i/s -      6.348k
-
-Comparison:
-       define_method:        1345.6 i/s
-module_eval with string:     1129.7 i/s - 1.19x slower
-```
-
-##### `raise` vs `E2MM#Raise` for raising (and defining) exeptions  [code](code/general/raise-vs-e2mmap.rb)
-
-Ruby's [Exception2MessageMapper module](http://ruby-doc.org/stdlib-2.2.0/libdoc/e2mmap/rdoc/index.html) allows one to define and raise exceptions with predefined messages.
-
-```
-$ ruby -v code/general/raise-vs-e2mmap.rb
-ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
-
-Calculating -------------------------------------
-Ruby exception: E2MM#Raise
-                         2.865k i/100ms
-Ruby exception: Kernel#raise
-                        42.215k i/100ms
--------------------------------------------------
-Ruby exception: E2MM#Raise
-                         27.270k (± 8.8%) i/s -    137.520k
-Ruby exception: Kernel#raise
-                        617.446k (± 7.9%) i/s -      3.082M
-
-Comparison:
-Ruby exception: Kernel#raise:   617446.2 i/s
-Ruby exception: E2MM#Raise:    27269.8 i/s - 22.64x slower
-
-Calculating -------------------------------------
-Custom exception: E2MM#Raise
-                         2.807k i/100ms
-Custom exception: Kernel#raise
-                        45.313k i/100ms
--------------------------------------------------
-Custom exception: E2MM#Raise
-                         29.005k (± 7.2%) i/s -    145.964k
-Custom exception: Kernel#raise
-                        589.149k (± 7.8%) i/s -      2.945M
-
-Comparison:
-Custom exception: Kernel#raise:   589148.7 i/s
-Custom exception: E2MM#Raise:    29004.8 i/s - 20.31x slower
-```
-
-##### `loop` vs `while true` [code](code/general/loop-vs-while-true.rb)
-
-```
-$ ruby -v code/general/loop-vs-while-true.rb
-ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-linux]
-
-Calculating -------------------------------------
-          While Loop     1.000  i/100ms
-         Kernel loop     1.000  i/100ms
--------------------------------------------------
-          While Loop      0.536  (± 0.0%) i/s -      3.000  in   5.593042s
-         Kernel loop      0.223  (± 0.0%) i/s -      2.000  in   8.982355s
-
-Comparison:
-          While Loop:        0.5 i/s
-         Kernel loop:        0.2 i/s - 2.41x slower
-```
-
-##### `ancestors.include?` vs `<=` [code](code/general/inheritance-check.rb)
-
-```
-$ ruby -vW0 code/general/inheritance-check.rb
-ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-linux]
-Warming up --------------------------------------
-  less than or equal    66.992k i/100ms
-  ancestors.include?    16.943k i/100ms
-Calculating -------------------------------------
-  less than or equal      1.250M (± 6.4%) i/s -      6.230M in   5.006896s
-  ancestors.include?    192.603k (± 4.8%) i/s -    965.751k in   5.025917s
-
-Comparison:
-  less than or equal:  1249606.0 i/s
-  ancestors.include?:   192602.9 i/s - 6.49x  slower
 ```
 
 ### Method Invocation
@@ -279,26 +144,6 @@ Calculating -------------------------------------
 Comparison:
                 Hash:  1604259.1 i/s
           OpenStruct:    96855.3 i/s - 16.56x slower
-```
-
-##### Kernel#format vs Float#round().to_s [code](code/general/format-vs-round-and-to-s.rb)
-
-```
-$ ruby -v code/general/format-vs-round-and-to-s.rb
-ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-darwin15]
-Warming up --------------------------------------
-         Float#round   106.645k i/100ms
-       Kernel#format    84.304k i/100ms
-            String#%    78.635k i/100ms
-Calculating -------------------------------------
-         Float#round      1.570M (± 3.2%) i/s - 7.892M in   5.030672s
-       Kernel#format      1.144M (± 3.0%) i/s - 5.733M in   5.015621s
-            String#%      1.047M (± 4.2%) i/s - 5.269M in   5.042970s
-
-Comparison:
-         Float#round:  1570411.4 i/s
-       Kernel#format:  1144036.6 i/s - 1.37x  slower
-            String#%:  1046689.1 i/s - 1.50x  slower
 ```
 
 ### Array
@@ -628,27 +473,6 @@ Comparison:
        inject symbol:    19001.5 i/s
       inject to_proc:    15958.3 i/s - 1.19x slower
         inject block:    14063.1 i/s - 1.35x slower
-```
-
-### Date
-
-##### `Date.iso8601` vs `Date.parse` [code](code/date/iso8601-vs-parse.rb)
-
-When expecting well-formatted data from e.g. an API, `iso8601` is faster and will raise an `ArgumentError` on malformed input.
-
-```
-$ ruby -v code/date/iso8601-vs-parse.rb
-ruby 2.4.3p205 (2017-12-14 revision 61247) [x86_64-darwin17]
-Warming up --------------------------------------
-        Date.iso8601    28.880k i/100ms
-          Date.parse    15.805k i/100ms
-Calculating -------------------------------------
-        Date.iso8601    328.035k (± 4.7%) i/s -      1.646M in   5.029287s
-          Date.parse    175.546k (± 3.8%) i/s -    885.080k in   5.049444s
-
-Comparison:
-        Date.iso8601:   328035.3 i/s
-          Date.parse:   175545.9 i/s - 1.87x  slower
 ```
 
 ### Hash
@@ -1348,56 +1172,6 @@ Comparison:
       String#squeeze:   372910.3 i/s
  String#gsub/regex+/:    14668.1 i/s - 25.42x  slower
 ```
-
-### Time
-
-##### `Time.iso8601` vs `Time.parse` [code](code/time/iso8601-vs-parse.rb)
-
-When expecting well-formatted data from e.g. an API, `iso8601` is faster and will raise an `ArgumentError` on malformed input.
-
-```
-$ ruby -v code/time/iso8601-vs-parse.rb
-ruby 2.4.3p205 (2017-12-14 revision 61247) [x86_64-darwin17]
-Warming up --------------------------------------
-        Time.iso8601    10.234k i/100ms
-          Time.parse     4.228k i/100ms
-Calculating -------------------------------------
-        Time.iso8601    114.485k (± 3.5%) i/s -    573.104k in   5.012008s
-          Time.parse     43.711k (± 4.1%) i/s -    219.856k in   5.038349s
-
-Comparison:
-        Time.iso8601:   114485.1 i/s
-          Time.parse:    43710.9 i/s - 2.62x  slower
-```
-
-### Range
-
-##### `cover?` vs `include?` [code](code/range/cover-vs-include.rb)
-
-`cover?` only check if it is within the start and end, `include?` needs to traverse the whole range.
-
-```
-$ ruby -v code/range/cover-vs-include.rb
-ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-linux]
-
-Calculating -------------------------------------
-        range#cover?    85.467k i/100ms
-      range#include?     7.720k i/100ms
-       range#member?     7.783k i/100ms
-       plain compare   102.189k i/100ms
--------------------------------------------------
-        range#cover?      1.816M (± 5.6%) i/s -      9.060M
-      range#include?     83.344k (± 5.0%) i/s -    416.880k
-       range#member?     82.654k (± 5.0%) i/s -    412.499k
-       plain compare      2.581M (± 6.2%) i/s -     12.876M
-
-Comparison:
-       plain compare:  2581211.8 i/s
-        range#cover?:  1816038.5 i/s - 1.42x slower
-      range#include?:    83343.9 i/s - 30.97x slower
-       range#member?:    82654.1 i/s - 31.23x slower
-```
-
 
 ## Less idiomatic but with significant performance
 - [`Array#reverse.index` vs `Array#size` - `Array#index` - 1](https://github.com/JuanitoFatas/fast-ruby/pull/28)
